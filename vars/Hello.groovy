@@ -1,4 +1,4 @@
-def call("hello") {
+def call(hello) {
   node {
     echo "world"
   }
