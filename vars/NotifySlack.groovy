@@ -1,17 +1,25 @@
 
 #!/usr/bin/env groovy
 
-def call(buildStatus) {
-  if ( buildStatus == "STARTED" ) {
-    slackSend color: "#87CEFA", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER}: ${env.BUILD_URL} started"
-  }
-  else if( buildStatus == "SUCCESS" ) {
-    slackSend color: "#BDFFC3", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER}: ${env.BUILD_URL} was success"
-  }
-  else if( buildStatus == "UNSTABLE" ) {
-    slackSend color: "#FFFE89", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER}: ${env.BUILD_URL} was unstable"
-  }
-  else {
-    slackSend color: "#FF9FA1", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER}: ${env.BUILD_URL} is waiting for next step"
+def call(notifySlack) {
+  def notifySlack(String buildStatus = 'STARTED') {
+    // Build status of null means success.
+    buildStatus = buildStatus ?: 'SUCCESS'
+    
+    def color
+    
+    if (buildStatus == 'STARTED') {
+        color = '#87CEFA'
+    } else if (buildStatus == 'SUCCESS') {
+        color = '#BDFFC3'
+    } else if (buildStatus == 'UNSTABLE') {
+        color = '#FFFE89'
+    } else {
+        color = '#FF9FA1'
+    }
+
+    def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+
+    slackSend(color: color, message: msg)
   }
 }
