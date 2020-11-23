@@ -1,7 +1,7 @@
 
 #!/usr/bin/env groovy
 
-def call(String buildStatus) {
+def call(buildStatus) {
   if ( buildStatus == "STARTED" ) {
     slackSend color: "#87CEFA", message: "Job: ${env.JOB_NAME} with buildnumber ${env.BUILD_NUMBER}: ${env.BUILD_URL} started"
   }
