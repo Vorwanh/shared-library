@@ -30,3 +30,5 @@ def call(String message = msg) {
         msg = "ANALYSIS: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: Not good at all!"
     } else if (slackSend == 'RESULT_GOOD') {
         msg = "DEPLOY: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: Prepared for modification"
+    }
+}
