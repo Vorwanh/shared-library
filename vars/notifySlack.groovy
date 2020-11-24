@@ -16,11 +16,9 @@ def call(String buildStatus = 'STARTED') {
     
     def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
     
-    script {
-        RESULT_GOOD = "ANALYSIS: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: All good!"
-        RESULT_BAD = "ANALYSIS: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: Not good at all!"
-        DEPLOY = "DEPLOY: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: Prepared for modification"
-    }
+    def RESULT_GOOD = "ANALYSIS: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: All good!"
+    def RESULT_BAD = "ANALYSIS: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: Not good at all!"
+    def DEPLOY = "DEPLOY: `${env.JOB_NAME}` #${env.BUILD_NUMBER}: Prepared for modification"
 
     slackSend(color: color, message: msg)
     
