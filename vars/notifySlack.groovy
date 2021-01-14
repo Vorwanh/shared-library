@@ -29,5 +29,5 @@ def call(String buildStatus = 'STARTED') {
     if ("${params.SMS_NOTIFICATION}" == true) {
         echo "SMS sended"
        
-    Send(slack: true, email: true, sms: true)
+    Send(slack: slack, email: email, sms: sms)
 }
