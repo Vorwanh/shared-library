@@ -15,6 +15,19 @@ def call(String buildStatus = 'STARTED') {
     }
 
     def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+  
+    def slack
+    if ("${params.SLACK_NOTIFICATION}" == true) {
+        slackSend(color: color, message: msg)
+        echo "Slack notification sended"
+    }
+    def email
+    if ("${params.EMAIL_NOTIFICATION}" == true) {
+        echo "Email sended"
+    }
+    def sms
+    if ("${params.SMS_NOTIFICATION}" == true) {
+        echo "SMS sended"
        
-    slackSend(color: color, message: msg)
+    Send(slack: true, email: true, sms: true)
 }
