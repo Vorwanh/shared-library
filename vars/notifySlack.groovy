@@ -20,7 +20,7 @@ def call(String buildStatus = 'STARTED') {
     
     if ("${params.SLACK_NOTIFICATION}" == true) {
         echo "Slack notification sended"
-        slackSend(color: color, message: msg)
+        slackNotification(color: color, message: msg)
     }
     if ("${params.EMAIL_NOTIFICATION}" == true) {
         echo "Email sended"
