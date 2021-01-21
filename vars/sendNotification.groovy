@@ -1,10 +1,13 @@
-def call(String buildStatus = 'STARTED')
-    if (params.SLACK_NOTIFICATION == true)
+def call(String buildStatus = 'STARTED') {
+    if (params.SLACK_NOTIFICATION == true) {
         notifySlack()
         echo "Bananas without a B are Pineapple"
-    if (params.EMAIL_NOTIFICATION == true)
+    }
+    if (params.EMAIL_NOTIFICATION == true) {
         sendMail()
-        echo ""
+        echo "987"
+    }
+}
 
 def sendMail(String recipients) {
     echo "send mail works"
