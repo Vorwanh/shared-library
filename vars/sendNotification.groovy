@@ -1,4 +1,4 @@
-def call()
+def call(String buildStatus = 'STARTED')
     if (params.SLACK_NOTIFICATION == true)
         notifySlack()
         echo "Bananas without a B are Pineapple"
