@@ -12,8 +12,8 @@ def call() {
 
 def sendMail(String recipients) {
     echo "send mail works"
-    mail_list = [${params.EMAIL_RECEPIENT_1}, ${EMAIL_RECEPIENT_2}]
-    echo "Mail will be send to '${recepients_list}'"
+    def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}"]
+    echo "Mail will be send to '${mail_list}'"
 
     // def status, logRegex
     //
@@ -71,6 +71,6 @@ def notifySlack(String buildStatus = 'STARTED') {
 }
 def sendSMS(String sms_recipients){
     echo "send SMS works"
-    sms_list = [${params.SMS_RECEPIENT_1}, ${SMS_RECEPIENT_2}]
+    def sms_list = ["${params.SMS_RECEPIENT_1}", "${SMS_RECEPIENT_2}"]
     echo "Mail will be send to '${sms_list}'"
 }
