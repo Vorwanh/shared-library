@@ -50,24 +50,23 @@ def sendMail(String recipients) {
 }
 def notifySlack(String buildStatus = 'STARTED') {
     echo "notify slack works"
-    // Build status of null means success.
-    // buildStatus = buildStatus ?: 'SUCCESS'
-    //
-    // def color
-    //
-    // if (buildStatus == 'STARTED') {
-    //     color = '#87CEFA'
-    // } else if (buildStatus == 'SUCCESS') {
-    //     color = '#BDFFC3'
-    // } else if (buildStatus == 'UNSTABLE') {
-    //     color = '#FFFE89'
-    // } else {
-    //     color = '#FF9FA1'
-    // }
-    //
-    // def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
-    //
-    // slackSend(color: color, message: msg)
+    //Build status of null means success.
+    buildStatus = buildStatus ?: 'SUCCESS'
+
+    def color
+    if (buildStatus == 'STARTED') {
+        color = '#87CEFA'
+    } else if (buildStatus == 'SUCCESS') {
+        color = '#BDFFC3'
+    } else if (buildStatus == 'UNSTABLE') {
+        color = '#FFFE89'
+    } else {
+        color = '#FF9FA1'
+    }
+    
+    def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+    
+    slackSend(color: color, message: msg)
 }
 def sendSMS(String sms_recipients){
     echo "send SMS works"
