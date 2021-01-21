@@ -1,11 +1,12 @@
-def call(String buildStatus = 'STARTED') {
+def call() {
     if (params.SLACK_NOTIFICATION == true) {
         notifySlack()
-        echo "Bananas without a B are Pineapple"
     }
     if (params.EMAIL_NOTIFICATION == true) {
         sendMail()
-        echo "987"
+    }
+    if (params.SMS_NOTIFICATION == true) {
+        sendSMS()
     }
 }
 
@@ -64,4 +65,7 @@ def notifySlack(String buildStatus = 'STARTED') {
     // def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
     //
     // slackSend(color: color, message: msg)
+}
+def sendSMS(String sms_recipients){
+    echo "send SMS works"
 }
