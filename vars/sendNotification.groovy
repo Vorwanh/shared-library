@@ -72,5 +72,5 @@ def notifySlack(String buildStatus = 'STARTED') {
 def sendSMS(String sms_recipients){
     echo "send SMS works"
     def sms_list = ["${params.SMS_RECEPIENT_1}", "${SMS_RECEPIENT_2}"]
-    echo "Mail will be send to '${sms_list}'"
+    echo "SMS will be send to '${sms_list}'"
 }
