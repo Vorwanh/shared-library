@@ -1,16 +1,39 @@
 def call() {
+  
     if (params.SLACK_NOTIFICATION == true) {
         notifySlack()
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        sendMail()
+        notifyMail()
     }
     if (params.SMS_NOTIFICATION == true) {
-        sendSMS()
+        notifySMS()
+    }    
+}
+
+def msg() {
+    if ("${params.MSG}" == ""){
+        msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+    }
+    else{
+        msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n message: ${params.MSG}"
     }
 }
 
-def sendMail(String recipients) {
+def sendMessage() {
+  if (params.SLACK_NOTIFICATION == true) {
+      slackSend(message: msg)
+  }
+  if (params.EMAIL_NOTIFICATION == true) {
+      mailSend(message: msg)
+  }
+  if (params.SMS_NOTIFICATION == true) {
+      smsSend(message: msg)
+  }    
+}
+}
+
+def notifyMail(String email_recipients) {
     echo "send mail works"
     def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}"]
     echo "Mail will be send to '${mail_list}'"
@@ -63,12 +86,12 @@ def notifySlack(String buildStatus = 'STARTED') {
     } else {
         color = '#FF9FA1'
     }
-    
-    def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
-    
+
+    //def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
+
     slackSend(color: color, message: msg)
 }
-def sendSMS(String sms_recipients){
+def notifySMS(String sms_recipients){
     echo "send SMS works"
     def sms_list = ["${params.SMS_RECEPIENT_1}", "${SMS_RECEPIENT_2}"]
     echo "SMS will be send to '${sms_list}'"
