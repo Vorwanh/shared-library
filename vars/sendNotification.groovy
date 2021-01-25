@@ -1,38 +1,31 @@
-def call() {
-  
+def call(String buildStatus = 'STARTED') {
+    echo "notify slack works"
+    //Build status of null means success.
+    buildStatus = buildStatus ?: 'SUCCESS'
+
+    def color
+    if (buildStatus == 'STARTED') {
+        color = '#87CEFA'
+    } else if (buildStatus == 'SUCCESS') {
+        color = '#BDFFC3'
+    } else if (buildStatus == 'UNSTABLE') {
+        color = '#FFFE89'
+    } else {
+        color = '#FF9FA1'
+    }
+
+    def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${params.MSG}"
+    
     if (params.SLACK_NOTIFICATION == true) {
-        notifySlack()
+        slackSend(color: color, message: msg)
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        notifyMail()
+        mailSend(message: msg)
     }
     if (params.SMS_NOTIFICATION == true) {
-        notifySMS()
-    }    
+        smsSend(message: msg)
+    } 
 }
-
-def msg() {
-    if ("${params.MSG}" == ""){
-        msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
-    }
-    else{
-        msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n message: ${params.MSG}"
-    }
-}
-
-def sendMessage() {
-  if (params.SLACK_NOTIFICATION == true) {
-      slackSend(message: msg)
-  }
-  if (params.EMAIL_NOTIFICATION == true) {
-      mailSend(message: msg)
-  }
-  if (params.SMS_NOTIFICATION == true) {
-      smsSend(message: msg)
-  }    
-}
-
-
 def notifyMail(String email_recipients) {
     echo "send mail works"
     def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}"]
@@ -70,26 +63,6 @@ def notifyMail(String email_recipients) {
     //     , mimeType: 'text/html'
     //     , from: '"Jenkins server" <foo@acme.org>'
     //     , to: "$recipients")
-}
-def notifySlack(String buildStatus = 'STARTED') {
-    echo "notify slack works"
-    //Build status of null means success.
-    buildStatus = buildStatus ?: 'SUCCESS'
-
-    def color
-    if (buildStatus == 'STARTED') {
-        color = '#87CEFA'
-    } else if (buildStatus == 'SUCCESS') {
-        color = '#BDFFC3'
-    } else if (buildStatus == 'UNSTABLE') {
-        color = '#FFFE89'
-    } else {
-        color = '#FF9FA1'
-    }
-
-    //def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}"
-
-    slackSend(color: color, message: msg)
 }
 def notifySMS(String sms_recipients){
     echo "send SMS works"
