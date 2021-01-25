@@ -31,7 +31,7 @@ def sendMessage() {
       smsSend(message: msg)
   }    
 }
-}
+
 
 def notifyMail(String email_recipients) {
     echo "send mail works"
