@@ -1,5 +1,4 @@
 def call(String buildStatus = 'STARTED') {
-    echo "notify slack works"
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
 
@@ -18,12 +17,13 @@ def call(String buildStatus = 'STARTED') {
     
     if (params.SLACK_NOTIFICATION == true) {
         slackSend(color: color, message: msg)
+        echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        mailSend(message: msg)
+        notifyMail()
     }
     if (params.SMS_NOTIFICATION == true) {
-        smsSend(message: msg)
+        notifySMS()
     } 
 }
 def notifyMail(String email_recipients) {
