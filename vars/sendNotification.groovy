@@ -62,7 +62,7 @@ def notifyMail(String email_recipients) {
         <p> <pre> \${BUILD_LOG_REGEX, regex = "^.*?$logRegex.*?\$", linesBefore = 25, linesAfter = 150, maxMatches = 10, showTruncatedLines = false, escapeHtml = false} </pre></p> """
         , mimeType: 'text/html'
         , from: '"Jenkins server" <foo@acme.org>'
-        , to: "$recipients")
+        , to: "$email_recipients")
 }
 def notifySMS(String sms_recipients){
     echo "send SMS works"
