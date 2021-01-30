@@ -33,6 +33,6 @@ def call(String email_recipients) {
         } - build# ${BUILD_NUMBER} </a></p>
         <p> <pre> \${BUILD_LOG_REGEX, regex = "^.*?$logRegex.*?\$", linesBefore = 25, linesAfter = 150, maxMatches = 10, showTruncatedLines = false, escapeHtml = false} </pre></p> """
         , mimeType: 'text/html'
-        , from: '"Jenkins server" <foo@acme.org>'
+        , from: '"Jenkins server" <jenkins.oasis@gmail.com>'
         , to: "$email_recipients")
 }
