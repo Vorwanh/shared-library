@@ -1,7 +1,8 @@
-def call(String email_recipients) {
+def call(String email_recipients, String message) {
     echo "send mail works"
     def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}"]
-    echo "Mail will be send to '${mail_list}'"
+    echo "Mail will be send to '${email_recipients}'"
+    echo "Message is: '${message}'"
 
     def status, logRegex
 
