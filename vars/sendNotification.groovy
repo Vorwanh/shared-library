@@ -1,6 +1,10 @@
 def call(String buildStatus = 'STARTED', email_recipients= '${EMAIL_RECEPIENT_1}', message= "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${params.MSG}") {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
+    
+    if email_recipients = "" {
+        params.EMAIL_NOTIFICATION == false
+    }
 
     def color
     if (buildStatus == 'STARTED') {
