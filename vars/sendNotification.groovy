@@ -20,7 +20,7 @@ def call(String buildStatus = 'STARTED') {
         echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        notifyMail(email_recepients: "jenkins.oasis@gmail.com")
+        notifyMail(email_recepients: "${params.EMAIL_RECEPIENTS_1}")
     }
     //if (params.SMS_NOTIFICATION == true) {
         //notifySMS()
