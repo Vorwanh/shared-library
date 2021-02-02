@@ -1,7 +1,7 @@
 def call(email_recipients= "jan.pochtiol@gmail.com", message= "No message at all") {
     echo "send mail works"
-    def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}"]
-    echo "Mail will be send to '${email_recipients}'"
+    def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}", "${email_recipients}]
+    echo "Mail will be send to '${mail_list}'"
     echo "Message is: '${message}'"
 
     //def status, logRegex
