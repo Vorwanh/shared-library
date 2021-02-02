@@ -1,4 +1,5 @@
 def call(String email_recipients, String message) {
+    wait(5)
     echo "send mail works"
     def mail_list = ["${params.EMAIL_RECEPIENT_1}", "${params.EMAIL_RECEPIENT_2}"]
     echo "Mail will be send to '${email_recipients}'"
