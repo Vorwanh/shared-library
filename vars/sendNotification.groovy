@@ -14,7 +14,7 @@ def call(String buildStatus = 'STARTED', email_recipients= '${EMAIL_RECEPIENT_1}
     }
     
     if (params.SLACK_NOTIFICATION == true) {
-        slackSend(color: color, message: msg)
+        slackSend(color: color, message)
         echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
