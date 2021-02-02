@@ -2,7 +2,7 @@ def call(String buildStatus = 'STARTED', email_recipients= '${EMAIL_RECEPIENT_1}
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
     
-    if email_recipients = "" {
+    if (email_recipients = "") {
         params.EMAIL_NOTIFICATION == false
     }
 
