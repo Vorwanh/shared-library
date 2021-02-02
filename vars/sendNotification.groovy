@@ -1,11 +1,11 @@
-def call(String buildStatus = 'STARTED', email_recipients= '${EMAIL_RECEPIENT_1}', message= "") {
+def call(String buildStatus = 'STARTED', email_recipients= '${EMAIL_RECEPIENT_1}', message= '') {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
     
     if (email_recipients == "") {
         params.EMAIL_NOTIFICATION = false
     }
-    if (message == "") {
+    if (message == '') {
         message = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${params.MSG}"
     }
 
@@ -21,13 +21,10 @@ def call(String buildStatus = 'STARTED', email_recipients= '${EMAIL_RECEPIENT_1}
     }
     
     if (params.SLACK_NOTIFICATION == true) {
-        slackSend(color: color, message)
+        //slackSend(color: color, message)
         echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
         notifyMail(email_recipients, message)
     }
-    //if (params.SMS_NOTIFICATION == true) {
-        //notifySMS()
-    //} 
 }
