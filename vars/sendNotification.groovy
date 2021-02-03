@@ -2,8 +2,8 @@ def call(String buildStatus = 'STARTED', String email_recipients = 'jenkins.OASI
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
 
-    echo email_recipients
-    echo comment
+    echo ${email_recipients}
+    echo ${comment}
     def color
     if (buildStatus == 'STARTED') {
         color = '#87CEFA'
