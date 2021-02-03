@@ -1,6 +1,7 @@
 def call(email_recipients = 'jenikns.OASIS@gmail.com',message = 'Probably not everybody.') {
     echo "send mail started"
 
+    echo email_recipients
     def status, logRegex
 
     switch (currentBuild.currentResult) {
