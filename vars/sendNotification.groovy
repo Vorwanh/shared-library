@@ -21,6 +21,6 @@ def call(String buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail
         echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        notifyMail(email_recipients, message: msg)
+        notifyMail(email_recipients: "jan.OASIS@gmail.com", message: msg)
     }
 }
