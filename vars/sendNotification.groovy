@@ -1,7 +1,6 @@
 def call(String buildStatus = 'STARTED', email_recipients= "jenkins.OASIS@gmail.com", comment= 'Everybody loves Jenkins!') {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
-    }
 
     def color
     if (buildStatus == 'STARTED') {
