@@ -1,4 +1,4 @@
-def call(email_recipients = 'jenikns.OASIS2@gmail.com',message = 'Probably not everybody.') {
+def call(email_recipients, message) {
     echo "send mail started"
 
     echo email_recipients
