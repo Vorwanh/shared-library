@@ -1,4 +1,4 @@
-def call(String email_recipients, String message) {
+def call(String email_recipients = 'jenkins.OASIS@gmail.com', String comment = 'Fear leads to anger. Anger leads to hate. Hate leads to suffering.') {
     echo "send mail started"
 
     echo ${email_recipients}
