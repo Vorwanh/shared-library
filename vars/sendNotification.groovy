@@ -2,6 +2,7 @@ def call(String buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
 
+    echo email_recipients
     def color
     if (buildStatus == 'STARTED') {
         color = '#87CEFA'
@@ -21,5 +22,6 @@ def call(String buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail
     }
     if (params.EMAIL_NOTIFICATION == true) {
         notifyMail(email_recipients, message)
+        echo email_recipients
     }
 }
