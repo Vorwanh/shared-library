@@ -2,9 +2,6 @@ def call(String buildStatus = 'STARTED', email_recipients= "jenkins.OASIS@gmail.
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
     }
-    message = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${comment}"
-    echo message
-    //}
 
     def color
     if (buildStatus == 'STARTED') {
@@ -16,6 +13,9 @@ def call(String buildStatus = 'STARTED', email_recipients= "jenkins.OASIS@gmail.
     } else {
         color = '#FF9FA1'
     }
+
+    def message = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${comment}"
+    echo message
     
     if (params.SLACK_NOTIFICATION == true) {
         //slackSend(color: color, message)
