@@ -3,7 +3,7 @@ def call(buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail.com',S
     buildStatus = buildStatus ?: 'SUCCESS'
 
     echo "${email_recipients}"
-    echo comment
+    echo "${comment}"
     def color
     if (buildStatus == 'STARTED') {
         color = '#87CEFA'
