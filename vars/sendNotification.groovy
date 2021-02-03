@@ -1,14 +1,9 @@
-def call(String buildStatus = 'STARTED', email_recipients= ${params.EMAIL_RECEPIENT_1}, message= 'Everybody loves Jenkins!') {
+def call(String buildStatus = 'STARTED', email_recipients= "jenkins.OASIS@gmail.com", comment= 'Everybody loves Jenkins!') {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
-    
-    echo "${email_recipients}"
-    
-    if (email_recipients == '') {
-        params.EMAIL_NOTIFICATION = false
     }
-    //if (message == '') {
-        //message = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${params.MSG}"
+    message = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${comment}"
+    echo message
     //}
 
     def color
