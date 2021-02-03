@@ -1,4 +1,4 @@
-def call(email_recipients, message) {
+def call(String email_recipients, String message) {
     echo "send mail started"
 
     echo email_recipients
