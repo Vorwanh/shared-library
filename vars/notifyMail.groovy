@@ -1,4 +1,4 @@
-def call(String email_recipients, String message) {
+def call(String email_recipients= "jenikns.OASIS@gmail.com", String message: "Probably not everybody.") {
     echo "send mail works"
     def mail_list = ["${email_recipients}"]
     echo "Mail will be send to '${mail_list}'"
