@@ -14,7 +14,7 @@ def call(String buildStatus = 'STARTED', email_recipients= "jenkins.OASIS@gmail.
     }
 
     def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${comment}"
-    echo message
+    echo msg
     
     if (params.SLACK_NOTIFICATION == true) {
         slackSend(color: color, message: msg)
