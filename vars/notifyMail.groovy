@@ -1,6 +1,7 @@
 def call(email_recipients= "jenikns.OASIS@gmail.com", message= "Probably not everybody.") {
     echo "send mail works"
     echo "${email_recipients}"
+    echo "${message}"
     def mail_list = ["${email_recipients}", "jan.pochtiol@gmail.com"]
     echo "Mail will be send to '${mail_list}'"
     echo "Message is: '${message}'"
