@@ -1,4 +1,4 @@
-def call(String buildStatus = 'STARTED', email_recipients= '${params.EMAIL_RECEPIENT_1}', message= 'Everybody loves Jenkins!') {
+def call(String buildStatus = 'STARTED', email_recipients= ${params.EMAIL_RECEPIENT_1}, message= 'Everybody loves Jenkins!') {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
     
