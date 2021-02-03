@@ -1,4 +1,4 @@
-def call(buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail.com', comment = 'I am changing my mind....') {
+def call(String buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail.com', comment = 'I am changing my mind....') {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
 
