@@ -1,8 +1,8 @@
 def call(email_recipients= "jenikns.OASIS@gmail.com", message= "Probably not everybody.") {
     echo "send mail works"
-    wait(5)
+    timeout (time: 4, unit:"SECONDS")
     echo "${email_recipients}"
-    wait(5)
+    timeout (time: 4, unit:"SECONDS")
     echo "${message}"
 
     //def status, logRegex
