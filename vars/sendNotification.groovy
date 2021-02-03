@@ -14,13 +14,13 @@ def call(String buildStatus = 'STARTED', email_recipients = 'jenkins.OASIS@gmail
     }
 
     def msg = "${buildStatus}: `${env.JOB_NAME}` #${env.BUILD_NUMBER}:\n${env.BUILD_URL}\n${comment}"
-    message = msg
+    //message = msg
     
     if (params.SLACK_NOTIFICATION == true) {
         //slackSend(color: color, message: msg)
         echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        notifyMail(email_recipients, message)
+        notifyMail(email_recipients: email_recipients, message: msg)
     }
 }
