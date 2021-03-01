@@ -2,8 +2,8 @@ def call(comment = 'Fear is the path to the dark side.', email_recipients = 'jen
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
 
-    echo ${email_recipients}
-    echo ${comment}
+    echo email_recipients
+    echo comment
     def color
     if (buildStatus == 'STARTED') {
         color = '#87CEFA'
