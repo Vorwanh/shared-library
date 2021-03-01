@@ -24,8 +24,6 @@ def call(String comment = '', String email_recipients = '', String buildStatus =
         echo "notify slack works"
     }
     if (email_recipients != '') {
-        echo email_recipients
         notifyMail(email_recipients, msg)
-        echo email_recipients
     }
 }
