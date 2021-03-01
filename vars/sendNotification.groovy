@@ -23,7 +23,7 @@ def call(String comment = '', String email_recipients = '', String buildStatus =
         //slackSend(color: color, message: msg)
         echo "notify slack works"
     }
-    if (email_recipients =! '') {
+    if (email_recipients != '') {
         //notifyMail(email_recipients, msg)
         echo email_recipients
     }
