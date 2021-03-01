@@ -24,7 +24,7 @@ def call(String comment = '', String email_recipients = 'jenkins.OASIS@gmail.com
         echo "notify slack works"
     }
     if (params.EMAIL_NOTIFICATION == true) {
-        notifyMail(email_recipients, message: message)
+        notifyMail(email_recipients, message)
         echo email_recipients
     }
 }
