@@ -1,9 +1,11 @@
 def call(String comment = 'Fear is the path to the dark side.', String email_recipients = 'jenkins.OASIS@gmail.com', String buildStatus = 'STARTED') {
     //Build status of null means success.
     buildStatus = buildStatus ?: 'SUCCESS'
-
-    echo email_recipients
+    
     echo comment
+    echo email_recipients
+    echo buildStatus
+    
     def color
     if (buildStatus == 'STARTED') {
         color = '#87CEFA'
